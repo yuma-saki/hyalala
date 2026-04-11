@@ -1,0 +1,385 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+
+.hero {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--color-background-info);
+  color: var(--color-text-info);
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+}
+.hero-copy {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+.hero-ping {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: var(--border-radius-md);
+  border: 0.5px solid var(--color-border-secondary);
+  color: var(--color-text-secondary);
+  background: var(--color-background-secondary);
+}
+
+.section {
+  padding: 2rem 1.5rem;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-icon {
+  font-size: 18px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem 1.25rem;
+}
+.card-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.card-note {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+.dna-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dna-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 0.9rem 1rem;
+}
+.dna-num {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  min-width: 28px;
+}
+.dna-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+.dna-text span {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+.member-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  text-align: center;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0 auto 8px;
+}
+.av-blue { background: #E6F1FB; }
+.av-teal { background: #E1F5EE; }
+.av-coral { background: #FAECE7; }
+.av-amber { background: #FAEEDA; }
+.av-purple { background: #EEEDFE; }
+.av-pink { background: #FBEAF0; }
+
+.member-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+.member-pos {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+.member-skill {
+  display: inline-block;
+  font-size: 11px;
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 2px 8px;
+}
+
+.recruit-box {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+}
+.recruit-box h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.recruit-box p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.recruit-conditions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+.cond-tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: var(--border-radius-md);
+  border: 0.5px solid var(--color-border-secondary);
+  color: var(--color-text-secondary);
+}
+.cond-tag.good {
+  background: #EAF3DE;
+  color: #3B6D11;
+  border-color: #97C459;
+}
+.cond-tag.bad {
+  background: #FCEBEB;
+  color: #A32D2D;
+  border-color: #F09595;
+}
+.ig-btn {
+  display: inline-block;
+  padding: 9px 24px;
+  border-radius: var(--border-radius-md);
+  border: 0.5px solid var(--color-border-secondary);
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-sans);
+}
+.ig-btn:hover { background: var(--color-background-secondary); }
+
+.footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+}
+</style>
+
+<div class="hero">
+  <div class="hero-badge">草野球チーム</div>
+  <h1>ひゃらら</h1>
+  <p class="hero-sub">西原町発・99世代・全員元卓球部</p>
+  <p class="hero-sub" style="margin-top:4px;">野球経験より卓球経験の方が長いチームです。</p>
+  <p class="hero-copy">「ラケットを置いてグローブを持った日、僕たちは野球選手になった。」</p>
+  <div class="hero-ping">
+    <span class="tag">⚾ 草野球</span>
+    <span class="tag">🏓 卓球部出身</span>
+    <span class="tag">📍 西原町</span>
+    <span class="tag">🎂 99年生まれ</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="section-icon">📊</span>チームデータ
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">創設世代</div>
+      <div class="card-value">99年</div>
+      <div class="card-note">平成生まれ全員集合</div>
+    </div>
+    <div class="card">
+      <div class="card-label">卓球経験</div>
+      <div class="card-value">全員</div>
+      <div class="card-note">野球経験者は少数派</div>
+    </div>
+    <div class="card">
+      <div class="card-label">活動場所</div>
+      <div class="card-value">西原町</div>
+      <div class="card-note">沖縄県・中頭郡</div>
+    </div>
+    <div class="card">
+      <div class="card-label">対戦募集</div>
+      <div class="card-value">受付中</div>
+      <div class="card-note">どなたでもどうぞ</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="section-icon">🧬</span>ひゃららのDNA
+  </div>
+  <div class="dna-list">
+    <div class="dna-item">
+      <div class="dna-num">01</div>
+      <div class="dna-text">
+        <strong>全員卓球部出身である</strong>
+        <span>バックハンドのキレは一流。スイングが卓球っぽいと言われても気にしない。</span>
+      </div>
+    </div>
+    <div class="dna-item">
+      <div class="dna-num">02</div>
+      <div class="dna-text">
+        <strong>99年生まれで固めている</strong>
+        <span>同い年なので言い訳もケンカも対等。責任の押しつけ合いも公平に行われる。</span>
+      </div>
+    </div>
+    <div class="dna-item">
+      <div class="dna-num">03</div>
+      <div class="dna-text">
+        <strong>西原町を愛している</strong>
+        <span>地元感がすごい。アウェーという概念がほぼない。</span>
+      </div>
+    </div>
+    <div class="dna-item">
+      <div class="dna-num">04</div>
+      <div class="dna-text">
+        <strong>対戦相手を常に求めている</strong>
+        <span>勝っても負けても野球がしたい。試合数が正義。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="section-icon">👤</span>メンバー
+  </div>
+  <p style="font-size:13px; color:var(--color-text-tertiary); margin-bottom:1rem;">※ 詳細はInstagramをチェック！（随時更新予定）</p>
+  <div class="member-grid">
+    <div class="member-card">
+      <div class="avatar av-blue">⚾</div>
+      <div class="member-name">ひゃらら A</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">卓球歴 > 野球歴</div>
+    </div>
+    <div class="member-card">
+      <div class="avatar av-teal">🏓</div>
+      <div class="member-name">ひゃらら B</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">サーブだけ上手い</div>
+    </div>
+    <div class="member-card">
+      <div class="avatar av-coral">🔥</div>
+      <div class="member-name">ひゃらら C</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">気合いだけは一流</div>
+    </div>
+    <div class="member-card">
+      <div class="avatar av-amber">✨</div>
+      <div class="member-name">ひゃらら D</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">守備範囲が謎</div>
+    </div>
+    <div class="member-card">
+      <div class="avatar av-purple">💜</div>
+      <div class="member-name">ひゃらら E</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">フォームだけプロ</div>
+    </div>
+    <div class="member-card">
+      <div class="avatar av-pink">🌸</div>
+      <div class="member-name">ひゃらら F</div>
+      <div class="member-pos">ポジション未定</div>
+      <div class="member-skill">打率より笑い率</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="recruit-box">
+    <h3>対戦相手、募集中です。</h3>
+    <p>強いチームも、弱いチームも、卓球部出身のチームも、<br>誰でも大歓迎です。まずは一戦よろしくお願いします🙇‍♂️</p>
+    <div class="recruit-conditions">
+      <span class="cond-tag good">野球経験者 歓迎</span>
+      <span class="cond-tag good">初心者 歓迎</span>
+      <span class="cond-tag good">卓球部出身 大歓迎</span>
+      <span class="cond-tag bad">スコアに厳しい方 要相談</span>
+    </div>
+    <a class="ig-btn" href="https://www.instagram.com/hyalala___official" target="_blank">Instagram でDMする ↗</a>
+  </div>
+</div>
+
+<div class="footer">
+  © ひゃらら / 西原町草野球チーム<br>
+  卓球部出身一同でお届けしています⚾
+</div>
