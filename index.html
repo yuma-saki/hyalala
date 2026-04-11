@@ -1,4 +1,4 @@
-<\!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -106,6 +106,18 @@
     .dna-text strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--yellow); }
     .dna-text span { font-size: 0.8rem; line-height: 1.9; color: rgba(255,255,255,0.75); }
 
+    /* RECORD */
+    .record-board { display: flex; align-items: center; gap: 0; border: 2px solid var(--black); margin-bottom: 24px; overflow: hidden; }
+    .record-cell { flex: 1; padding: 16px 10px; text-align: center; border-right: 2px solid var(--black); background: var(--white); }
+    .record-cell:last-child { border-right: none; }
+    .record-label { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--mid-gray); margin-bottom: 6px; text-transform: uppercase; }
+    .record-num { font-family: 'Oswald', sans-serif; font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 700; line-height: 1; }
+    .record-unit { font-size: 0.72rem; font-weight: 700; margin-left: 2px; }
+    .record-cell.total .record-num { color: var(--black); }
+    .record-cell.wins .record-num { color: var(--green); }
+    .record-cell.losses .record-num { color: var(--loss-red); }
+    .record-cell.draws .record-num { color: #888; }
+
     /* MATCH */
     .match-list { display: flex; flex-direction: column; gap: 0; }
     .match-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
@@ -168,7 +180,7 @@
 </head>
 <body>
 
-<\!-- MASTHEAD -->
+<!-- MASTHEAD -->
 <header class="masthead">
   <div class="masthead-top">
     <span>沖縄県中頭郡西原町 / 草野球チーム【軟式】公式</span>
@@ -190,7 +202,7 @@
   </div>
 </header>
 
-<\!-- NAV -->
+<!-- NAV -->
 <nav class="nav-bar">
   <div class="nav-inner">
     <a href="#about" class="nav-link">▶ チーム概要</a>
@@ -202,7 +214,7 @@
   </div>
 </nav>
 
-<\!-- ALERT -->
+<!-- ALERT -->
 <div class="alert-bar">◆ 独占スクープ！ ◆ 元卓球部が草野球に殴り込み ◆ 正月野球で優勝・賞金10万円獲得の衝撃 ◆</div>
 <div class="marquee-wrap">
   <div class="marquee-inner">
@@ -210,7 +222,7 @@
   </div>
 </div>
 
-<\!-- HERO -->
+<!-- HERO -->
 <section id="about" class="front-page">
   <div class="headline-main">
     <div>
@@ -235,7 +247,7 @@
   </div>
 </section>
 
-<\!-- TAGS -->
+<!-- TAGS -->
 <div class="tags-section">
   <span class="tag">⚾ 草野球（軟式）</span>
   <span class="tag">🏓 全員卓球部出身</span>
@@ -244,7 +256,7 @@
   <span class="tag">🏆 大会出場経験あり</span>
 </div>
 
-<\!-- TEAM DATA -->
+<!-- TEAM DATA -->
 <section id="data" class="page-section">
   <div class="section-col-header">TEAM DATA<strong>緊急特集：チームデータ完全解剖</strong></div>
   <div class="cards-grid">
@@ -275,7 +287,7 @@
   </div>
 </section>
 
-<\!-- DNA -->
+<!-- DNA -->
 <section id="dna" class="dna-section-bg">
   <div class="dna-inner">
     <div class="dna-header">
@@ -329,9 +341,27 @@
   </div>
 </section>
 
-<\!-- MATCH RESULTS -->
+<!-- MATCH RESULTS -->
 <section id="results" class="page-section">
   <div class="section-col-header">MATCH RESULTS<strong>試合結果 全記録——勝敗の歴史を独占掲載</strong></div>
+  <div class="record-board">
+    <div class="record-cell total">
+      <div class="record-label">通算</div>
+      <div class="record-num">19<span class="record-unit">戦</span></div>
+    </div>
+    <div class="record-cell wins">
+      <div class="record-label">勝利</div>
+      <div class="record-num">12<span class="record-unit">勝</span></div>
+    </div>
+    <div class="record-cell losses">
+      <div class="record-label">敗北</div>
+      <div class="record-num">6<span class="record-unit">敗</span></div>
+    </div>
+    <div class="record-cell draws">
+      <div class="record-label">引分</div>
+      <div class="record-num">1<span class="record-unit">分</span></div>
+    </div>
+  </div>
   <div class="match-list">
     <div class="match-item">
       <div class="match-badge loss">負</div>
@@ -469,7 +499,7 @@
   </div>
 </section>
 
-<\!-- MEMBERS -->
+<!-- MEMBERS -->
 <section id="members" class="page-section">
   <div class="section-col-header">MEMBER LIST<strong>メンバー列伝——全員の素顔に迫る</strong></div>
   <p style="font-size:0.72rem; color:var(--mid-gray); margin-bottom:16px;">※ 各メンバーの詳細はInstagramのハイライトをチェック！</p>
@@ -615,7 +645,7 @@
   </div>
 </section>
 
-<\!-- RECRUIT -->
+<!-- RECRUIT -->
 <section id="recruit" class="recruit-section">
   <div class="recruit-inner">
     <div class="scoop-tag">緊急募集！！</div>
@@ -636,7 +666,7 @@
   </div>
 </section>
 
-<\!-- FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-masthead">週刊 ひゃらら</div>
   <div class="footer-rule"></div>
