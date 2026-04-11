@@ -1,385 +1,649 @@
+<\!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>週刊ひゃらら｜号外｜西原町草野球チーム</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Oswald:wght@700&display=swap');
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); }
+    :root {
+      --black: #111111;
+      --white: #f8f6f0;
+      --off-white: #ece9e1;
+      --yellow: #FFD700;
+      --dark-yellow: #E6B800;
+      --red: #CC0000;
+      --mid-gray: #555;
+      --light-gray: #ddd;
+      --green: #3b6d11;
+      --loss-red: #a32d2d;
+    }
 
-.hero {
-  text-align: center;
-  padding: 3rem 1.5rem 2rem;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-}
-.hero-badge {
-  display: inline-block;
-  background: var(--color-background-info);
-  color: var(--color-text-info);
-  font-size: 12px;
-  padding: 4px 14px;
-  border-radius: var(--border-radius-md);
-  margin-bottom: 1rem;
-  letter-spacing: 0.04em;
-}
-.hero h1 {
-  font-size: 48px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-}
-.hero-sub {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.25rem;
-}
-.hero-copy {
-  font-size: 14px;
-  color: var(--color-text-tertiary);
-  margin-top: 0.75rem;
-  font-style: italic;
-}
-.hero-ping {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.tag {
-  font-size: 13px;
-  padding: 5px 14px;
-  border-radius: var(--border-radius-md);
-  border: 0.5px solid var(--color-border-secondary);
-  color: var(--color-text-secondary);
-  background: var(--color-background-secondary);
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.section {
-  padding: 2rem 1.5rem;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  max-width: 720px;
-  margin: 0 auto;
-}
-.section-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-icon {
-  font-size: 18px;
-}
+    body {
+      background-color: var(--off-white);
+      font-family: 'Noto Serif JP', serif;
+      color: var(--black);
+      overflow-x: hidden;
+    }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
-}
-.card {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  padding: 1rem 1.25rem;
-}
-.card-label {
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  margin-bottom: 6px;
-}
-.card-value {
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-}
-.card-note {
-  font-size: 11px;
-  color: var(--color-text-tertiary);
-  margin-top: 4px;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+    }
 
-.dna-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.dna-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: var(--color-background-secondary);
-  border-radius: var(--border-radius-md);
-  padding: 0.9rem 1rem;
-}
-.dna-num {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--color-text-tertiary);
-  min-width: 28px;
-}
-.dna-text strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: 2px;
-}
-.dna-text span {
-  font-size: 13px;
-  color: var(--color-text-secondary);
-}
+    /* MASTHEAD */
+    .masthead { background: var(--black); color: var(--white); text-align: center; border-bottom: 6px solid var(--yellow); }
+    .masthead-top { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; border-bottom: 1px solid rgba(255,255,255,0.15); font-size: 0.7rem; flex-wrap: wrap; gap: 6px; }
+    .masthead-top span { color: rgba(255,255,255,0.6); }
+    .gouga { background: var(--yellow); color: var(--black); font-weight: 900; font-size: 0.7rem; padding: 2px 10px; letter-spacing: 0.15em; }
+    .masthead-title-area { padding: 16px 20px 20px; }
+    .newspaper-title { font-family: 'Oswald', 'Noto Serif JP', sans-serif; font-size: clamp(2.5rem, 10vw, 6rem); font-weight: 700; letter-spacing: 0.05em; line-height: 1; color: var(--white); }
+    .newspaper-subtitle { font-size: 0.75rem; color: var(--yellow); letter-spacing: 0.3em; margin-top: 6px; }
+    .newspaper-meta { display: flex; justify-content: center; gap: 20px; padding: 8px 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.65rem; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
 
-.member-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-}
-.member-card {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  padding: 1rem;
-  text-align: center;
-}
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin: 0 auto 8px;
-}
-.av-blue { background: #E6F1FB; }
-.av-teal { background: #E1F5EE; }
-.av-coral { background: #FAECE7; }
-.av-amber { background: #FAEEDA; }
-.av-purple { background: #EEEDFE; }
-.av-pink { background: #FBEAF0; }
+    /* ALERT */
+    .alert-bar { background: var(--yellow); color: var(--black); padding: 12px 20px; text-align: center; font-weight: 900; font-size: clamp(0.8rem, 2.5vw, 1.05rem); letter-spacing: 0.12em; }
+    .marquee-wrap { background: var(--red); color: var(--white); padding: 7px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-inner { display: inline-block; animation: marquee-scroll 22s linear infinite; font-size: 0.72rem; letter-spacing: 0.12em; }
+    @keyframes marquee-scroll { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
 
-.member-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: 2px;
-}
-.member-pos {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-  margin-bottom: 6px;
-}
-.member-skill {
-  display: inline-block;
-  font-size: 11px;
-  background: var(--color-background-secondary);
-  color: var(--color-text-secondary);
-  border-radius: var(--border-radius-md);
-  padding: 2px 8px;
-}
+    /* NAV */
+    .nav-bar { background: var(--off-white); border-bottom: 2px solid var(--black); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-link { display: inline-block; padding: 10px 18px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--black); text-decoration: none; white-space: nowrap; border-right: 1px solid var(--light-gray); transition: background 0.15s; }
+    .nav-link:hover { background: var(--yellow); }
 
-.recruit-box {
-  background: var(--color-background-secondary);
-  border-radius: var(--border-radius-lg);
-  padding: 1.5rem;
-  text-align: center;
-}
-.recruit-box h3 {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: 0.5rem;
-}
-.recruit-box p {
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-.recruit-conditions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 1.25rem;
-}
-.cond-tag {
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: var(--border-radius-md);
-  border: 0.5px solid var(--color-border-secondary);
-  color: var(--color-text-secondary);
-}
-.cond-tag.good {
-  background: #EAF3DE;
-  color: #3B6D11;
-  border-color: #97C459;
-}
-.cond-tag.bad {
-  background: #FCEBEB;
-  color: #A32D2D;
-  border-color: #F09595;
-}
-.ig-btn {
-  display: inline-block;
-  padding: 9px 24px;
-  border-radius: var(--border-radius-md);
-  border: 0.5px solid var(--color-border-secondary);
-  background: var(--color-background-primary);
-  color: var(--color-text-primary);
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: var(--font-sans);
-}
-.ig-btn:hover { background: var(--color-background-secondary); }
+    /* FRONT PAGE */
+    .front-page { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+    .headline-main { border-bottom: 4px solid var(--black); padding-bottom: 24px; margin-bottom: 24px; display: grid; grid-template-columns: 1fr 280px; gap: 30px; align-items: start; }
+    .headline-label { display: inline-block; background: var(--red); color: var(--white); padding: 4px 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 12px; }
+    .headline-h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 900; line-height: 1.3; margin-bottom: 14px; }
+    .headline-catchphrase { font-size: 1.05rem; font-style: italic; color: var(--red); font-weight: 700; margin-bottom: 10px; }
+    .headline-body { font-size: 0.85rem; line-height: 2; color: var(--mid-gray); }
+    .headline-body strong { color: var(--red); font-weight: 700; }
+    .scoop-box { background: var(--yellow); border: 3px solid var(--black); padding: 20px 16px; position: relative; }
+    .scoop-box::before { content: '独占スクープ！'; position: absolute; top: -13px; left: 12px; background: var(--red); color: var(--white); font-size: 0.65rem; font-weight: 700; padding: 2px 10px; letter-spacing: 0.1em; }
+    .scoop-title { font-size: 1rem; font-weight: 900; line-height: 1.5; margin-bottom: 10px; }
+    .scoop-body { font-size: 0.75rem; line-height: 1.9; }
+    .photo-placeholder { width: 100%; height: 160px; background: repeating-linear-gradient(45deg, var(--light-gray), var(--light-gray) 10px, var(--off-white) 10px, var(--off-white) 20px); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; font-size: 0.62rem; color: var(--mid-gray); margin-bottom: 12px; }
+    .photo-placeholder .icon { font-size: 2.5rem; }
 
-.footer {
-  text-align: center;
-  padding: 2rem 1.5rem;
-  color: var(--color-text-tertiary);
-  font-size: 12px;
-}
-</style>
+    /* TAGS */
+    .tags-section { background: var(--black); padding: 12px 20px; text-align: center; }
+    .tag { display: inline-block; border: 1px solid var(--yellow); color: var(--yellow); padding: 3px 12px; margin: 3px; font-size: 0.7rem; letter-spacing: 0.08em; }
 
-<div class="hero">
-  <div class="hero-badge">草野球チーム</div>
-  <h1>ひゃらら</h1>
-  <p class="hero-sub">西原町発・99世代・全員元卓球部</p>
-  <p class="hero-sub" style="margin-top:4px;">野球経験より卓球経験の方が長いチームです。</p>
-  <p class="hero-copy">「ラケットを置いてグローブを持った日、僕たちは野球選手になった。」</p>
-  <div class="hero-ping">
-    <span class="tag">⚾ 草野球</span>
-    <span class="tag">🏓 卓球部出身</span>
-    <span class="tag">📍 西原町</span>
-    <span class="tag">🎂 99年生まれ</span>
+    /* SECTIONS */
+    .page-section { max-width: 1000px; margin: 0 auto; padding: 28px 20px; border-bottom: 2px solid var(--black); }
+    .section-col-header { font-size: 0.6rem; letter-spacing: 0.3em; color: var(--mid-gray); border-bottom: 2px solid var(--black); padding-bottom: 4px; margin-bottom: 20px; text-transform: uppercase; }
+    .section-col-header strong { color: var(--black); font-size: clamp(1rem, 3vw, 1.4rem); display: block; margin-top: 4px; letter-spacing: 0.08em; font-family: 'Oswald', sans-serif; font-weight: 700; }
+
+    /* TEAM DATA */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border: 2px solid var(--black); }
+    .data-card { padding: 22px 18px; border-right: 2px solid var(--black); border-bottom: 2px solid var(--black); background: var(--white); }
+    .data-card:last-child { border-right: none; }
+    .data-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+    .data-label { font-size: 0.62rem; color: var(--mid-gray); letter-spacing: 0.12em; margin-bottom: 4px; text-transform: uppercase; }
+    .data-value { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--black); line-height: 1.2; }
+    .data-note { font-size: 0.65rem; color: var(--mid-gray); margin-top: 4px; }
+
+    /* DNA */
+    .dna-section-bg { background: var(--black); color: var(--white); padding: 36px 20px; border-top: 4px solid var(--yellow); border-bottom: 4px solid var(--yellow); }
+    .dna-inner { max-width: 1000px; margin: 0 auto; }
+    .dna-header { text-align: center; margin-bottom: 24px; border-bottom: 2px solid var(--yellow); padding-bottom: 12px; }
+    .dna-tag-label { background: var(--yellow); color: var(--black); font-size: 0.65rem; font-weight: 700; padding: 3px 12px; letter-spacing: 0.2em; display: inline-block; margin-bottom: 8px; }
+    .dna-header h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.2rem, 4vw, 2rem); letter-spacing: 0.15em; }
+    .dna-list { display: flex; flex-direction: column; gap: 12px; }
+    .dna-item { display: flex; align-items: flex-start; gap: 16px; border-left: 4px solid var(--yellow); padding: 14px 16px; background: rgba(255,255,255,0.04); }
+    .dna-num { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; color: rgba(255,215,0,0.35); min-width: 36px; line-height: 1; }
+    .dna-text strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--yellow); }
+    .dna-text span { font-size: 0.8rem; line-height: 1.9; color: rgba(255,255,255,0.75); }
+
+    /* MATCH */
+    .match-list { display: flex; flex-direction: column; gap: 0; }
+    .match-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--light-gray); }
+    .match-item:last-child { border-bottom: none; }
+    .match-badge { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 700; min-width: 40px; text-align: center; padding: 5px 6px; border: 2px solid currentColor; line-height: 1; white-space: nowrap; }
+    .match-badge.win { color: var(--green); background: #eaf3de; border-color: #97c459; }
+    .match-badge.loss { color: var(--loss-red); background: #fcebeb; border-color: #f09595; }
+    .match-badge.draw { color: #888; background: #f5f5f5; border-color: #bbb; }
+    .match-badge.champ { color: var(--black); background: var(--yellow); border-color: var(--dark-yellow); }
+    .match-content { flex: 1; }
+    .match-headline { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
+    .match-detail { font-size: 0.78rem; color: var(--mid-gray); line-height: 1.8; }
+
+    /* MEMBERS */
+    .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .member-article { border: 1px solid var(--black); background: var(--white); overflow: hidden; }
+    .member-article-header { background: var(--black); color: var(--yellow); padding: 7px 12px; display: flex; justify-content: space-between; font-size: 0.62rem; letter-spacing: 0.12em; }
+    .member-article-body { padding: 14px 12px; display: flex; gap: 12px; align-items: flex-start; }
+    .member-avatar { width: 52px; height: 52px; border: 1px solid var(--black); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
+    .av-blue { background: #e6f1fb; } .av-teal { background: #e1f5ee; } .av-coral { background: #faece7; }
+    .av-amber { background: #faeeda; } .av-purple { background: #eeedfe; } .av-pink { background: #fbeaf0; }
+    .member-info { flex: 1; }
+    .member-name { font-size: 1rem; font-weight: 900; margin-bottom: 3px; }
+    .member-pos { font-size: 0.68rem; color: var(--mid-gray); margin-bottom: 6px; }
+    .member-skill-box { background: var(--yellow); color: var(--black); font-size: 0.68rem; font-weight: 700; padding: 3px 8px; display: inline-block; }
+    .member-note { font-size: 0.65rem; color: var(--mid-gray); margin-top: 6px; line-height: 1.6; font-style: italic; }
+
+    /* RECRUIT */
+    .recruit-section { background: var(--yellow); padding: 44px 20px; text-align: center; border-top: 6px solid var(--black); border-bottom: 6px solid var(--black); }
+    .recruit-inner { max-width: 700px; margin: 0 auto; }
+    .scoop-tag { display: inline-block; background: var(--red); color: var(--white); font-size: 0.78rem; font-weight: 700; padding: 6px 20px; letter-spacing: 0.2em; margin-bottom: 16px; transform: rotate(-1deg); }
+    .recruit-headline { font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 5vw, 2.8rem); font-weight: 700; color: var(--black); line-height: 1.2; margin-bottom: 20px; }
+    .recruit-body { font-size: 0.9rem; line-height: 2; color: var(--black); margin-bottom: 20px; }
+    .recruit-conditions { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .cond-tag { font-size: 0.72rem; padding: 5px 14px; border: 2px solid var(--black); font-weight: 700; background: white; }
+    .cond-tag.good { background: #eaf3de; color: var(--green); border-color: #97c459; }
+    .cond-tag.bad { background: #fcebeb; color: var(--loss-red); border-color: #f09595; }
+    .recruit-cta { display: inline-block; background: var(--black); color: var(--yellow); padding: 16px 40px; font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 0.2em; text-decoration: none; font-weight: 700; border: 3px solid var(--black); transition: all 0.15s; }
+    .recruit-cta:hover { background: var(--white); color: var(--black); }
+    .recruit-fine-print { margin-top: 12px; font-size: 0.65rem; color: rgba(0,0,0,0.45); }
+
+    /* FOOTER */
+    footer { background: var(--black); color: var(--white); padding: 28px 20px; text-align: center; border-top: 4px solid var(--yellow); }
+    .footer-masthead { font-family: 'Oswald', sans-serif; font-size: clamp(1.2rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: 0.2em; color: var(--yellow); margin-bottom: 10px; }
+    .footer-rule { width: 60px; height: 2px; background: var(--yellow); margin: 10px auto; }
+    footer p { font-size: 0.7rem; color: rgba(255,255,255,0.5); line-height: 2; letter-spacing: 0.05em; }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .headline-main { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .data-card:nth-child(even) { border-right: none; }
+      .member-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 400px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .data-card { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<\!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <span>沖縄県中頭郡西原町 / 草野球チーム【軟式】公式</span>
+    <span class="gouga">【 号 外 】</span>
+    <span>創刊 2020年 / 99世代発行</span>
+  </div>
+  <div class="masthead-title-area">
+    <div class="newspaper-title">週刊 ひゃらら</div>
+    <div class="newspaper-subtitle">NISHIHARA BASEBALL GOSSIP — 草野球界に激震</div>
+  </div>
+  <div class="newspaper-meta">
+    <span>西原町草野球チーム 公式</span>
+    <span>|</span>
+    <span>99年生まれ 卓球部出身</span>
+    <span>|</span>
+    <span>大会出場経験あり</span>
+    <span>|</span>
+    <span>対戦募集中</span>
+  </div>
+</header>
+
+<\!-- NAV -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="#about" class="nav-link">▶ チーム概要</a>
+    <a href="#data" class="nav-link">▶ チームデータ</a>
+    <a href="#dna" class="nav-link">▶ ひゃらら DNA</a>
+    <a href="#results" class="nav-link">▶ 試合結果</a>
+    <a href="#members" class="nav-link">▶ メンバー</a>
+    <a href="#recruit" class="nav-link">▶ 対戦募集</a>
+  </div>
+</nav>
+
+<\!-- ALERT -->
+<div class="alert-bar">◆ 独占スクープ！ ◆ 元卓球部が草野球に殴り込み ◆ 正月野球で優勝・賞金10万円獲得の衝撃 ◆</div>
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    ⚾ 西原町から現れた刺客「ひゃらら」の全貌　⚾ 全員卓球部出身　⚾ バックハンドのキレは一流、スイングが卓球っぽいと言われても気にしない　⚾ 2026年正月野球 全勝優勝・賞金10万円ゲット　⚾ 次はサッカー部を狙っています　⚾ 挑戦状は @hyalala___official まで　⚾
   </div>
 </div>
 
-<div class="section">
-  <div class="section-title">
-    <span class="section-icon">📊</span>チームデータ
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-label">創設世代</div>
-      <div class="card-value">99年</div>
-      <div class="card-note">平成生まれ全員集合</div>
+<\!-- HERO -->
+<section id="about" class="front-page">
+  <div class="headline-main">
+    <div>
+      <div class="headline-label">超速報</div>
+      <h1 class="headline-h1">「ラケットを置いた日から、<br>僕たちは野球選手になった。」</h1>
+      <p class="headline-catchphrase">「しあさって ひゃらら！」</p>
+      <p class="headline-body">
+        沖縄県中頭郡西原町を本拠地とする草野球チーム「ひゃらら」。その最大の特徴は<strong>全員が卓球部出身</strong>という前代未聞の経歴。バックハンドのキレは一流、スイングが卓球っぽいと言われても気にしない。むしろ誇り。<br><br>
+        スローガンは「99世代・全員卓球部出身・西原町発」。<strong>2026年正月野球では賞金10万円を獲得</strong>——使途は現在も不明だという。
+      </p>
     </div>
-    <div class="card">
-      <div class="card-label">卓球経験</div>
-      <div class="card-value">全員</div>
-      <div class="card-note">野球経験者は少数派</div>
-    </div>
-    <div class="card">
-      <div class="card-label">活動場所</div>
-      <div class="card-value">西原町</div>
-      <div class="card-note">沖縄県・中頭郡</div>
-    </div>
-    <div class="card">
-      <div class="card-label">対戦募集</div>
-      <div class="card-value">受付中</div>
-      <div class="card-note">どなたでもどうぞ</div>
+    <div>
+      <div class="photo-placeholder">
+        <span class="icon">⚾</span>
+        <span>【写真】チーム集合イメージ</span>
+      </div>
+      <div class="scoop-box">
+        <div class="scoop-title">卓球部出身のみで<br>草野球チームを結成<br>大会出場経験あり</div>
+        <p class="scoop-body">「なぜ野球なのか」という問いに、チームは笑顔で答えた。「それが一番面白いから」。</p>
+      </div>
     </div>
   </div>
+</section>
+
+<\!-- TAGS -->
+<div class="tags-section">
+  <span class="tag">⚾ 草野球（軟式）</span>
+  <span class="tag">🏓 全員卓球部出身</span>
+  <span class="tag">📍 西原町</span>
+  <span class="tag">🎂 99年生まれ</span>
+  <span class="tag">🏆 大会出場経験あり</span>
 </div>
 
-<div class="section">
-  <div class="section-title">
-    <span class="section-icon">🧬</span>ひゃららのDNA
-  </div>
-  <div class="dna-list">
-    <div class="dna-item">
-      <div class="dna-num">01</div>
-      <div class="dna-text">
-        <strong>全員卓球部出身である</strong>
-        <span>バックハンドのキレは一流。スイングが卓球っぽいと言われても気にしない。</span>
-      </div>
+<\!-- TEAM DATA -->
+<section id="data" class="page-section">
+  <div class="section-col-header">TEAM DATA<strong>緊急特集：チームデータ完全解剖</strong></div>
+  <div class="cards-grid">
+    <div class="data-card">
+      <span class="data-icon">📅</span>
+      <div class="data-label">創設</div>
+      <div class="data-value">2020年</div>
+      <div class="data-note">初投稿 2020年5月</div>
     </div>
-    <div class="dna-item">
-      <div class="dna-num">02</div>
-      <div class="dna-text">
-        <strong>99年生まれで固めている</strong>
-        <span>同い年なので言い訳もケンカも対等。責任の押しつけ合いも公平に行われる。</span>
-      </div>
+    <div class="data-card">
+      <span class="data-icon">👥</span>
+      <div class="data-label">フォロワー</div>
+      <div class="data-value">111人</div>
+      <div class="data-note">地元密着の注目度</div>
     </div>
-    <div class="dna-item">
-      <div class="dna-num">03</div>
-      <div class="dna-text">
-        <strong>西原町を愛している</strong>
-        <span>地元感がすごい。アウェーという概念がほぼない。</span>
-      </div>
+    <div class="data-card">
+      <span class="data-icon">📍</span>
+      <div class="data-label">活動場所</div>
+      <div class="data-value">西原町</div>
+      <div class="data-note">沖縄県・中頭郡</div>
     </div>
-    <div class="dna-item">
-      <div class="dna-num">04</div>
-      <div class="dna-text">
-        <strong>対戦相手を常に求めている</strong>
-        <span>勝っても負けても野球がしたい。試合数が正義。</span>
-      </div>
+    <div class="data-card">
+      <span class="data-icon">⚾</span>
+      <div class="data-label">対戦募集</div>
+      <div class="data-value">受付中</div>
+      <div class="data-note">部活出身チーム歓迎</div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <div class="section-title">
-    <span class="section-icon">👤</span>メンバー
+<\!-- DNA -->
+<section id="dna" class="dna-section-bg">
+  <div class="dna-inner">
+    <div class="dna-header">
+      <div class="dna-tag-label">衝撃の内幕</div>
+      <h2>ひゃらら の DNA を全解剖</h2>
+    </div>
+    <div class="dna-list">
+      <div class="dna-item">
+        <div class="dna-num">01</div>
+        <div class="dna-text">
+          <strong>全員卓球部出身である</strong>
+          <span>バックハンドのキレは一流。スイングが卓球っぽいと言われても気にしない。むしろ誇り。</span>
+        </div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-num">02</div>
+        <div class="dna-text">
+          <strong>99年生まれで固めている</strong>
+          <span>同い年なのでケンカも言い訳も全部対等。「俺のせいじゃない」が通じない環境。</span>
+        </div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-num">03</div>
+        <div class="dna-text">
+          <strong>勝ち金はタイ旅行へ消える</strong>
+          <span>2024年の目標は「勝ちにこだわる」。理由は旅行資金のため。そして2026年正月野球で優勝、賞金10万円ゲット。使途は不明。</span>
+        </div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-num">04</div>
+        <div class="dna-text">
+          <strong>部活チームなら誰でも戦う</strong>
+          <span>バスケ部・サッカー部・西高OB…他部活チームを片っ端から倒してきた実績あり。次はサッカー部を狙ってます。</span>
+        </div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-num">05</div>
+        <div class="dna-text">
+          <strong>夢は甲子園、ヒーローインタビューもやってる</strong>
+          <span>試合後にヒーローインタビューを実施。第一弾はゆうま選手（0回1/3登板）。本人は誇らしそうだった。</span>
+        </div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-num">06</div>
+        <div class="dna-text">
+          <strong>次の試合は「マシンガン打線・機動破壊・120セクステット」で挑む</strong>
+          <span>意味はわからないが、気合いだけは伝わる。毎回本気。</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <p style="font-size:13px; color:var(--color-text-tertiary); margin-bottom:1rem;">※ 詳細はInstagramをチェック！（随時更新予定）</p>
+</section>
+
+<\!-- MATCH RESULTS -->
+<section id="results" class="page-section">
+  <div class="section-col-header">MATCH RESULTS<strong>試合結果 全記録——勝敗の歴史を独占掲載</strong></div>
+  <div class="match-list">
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2026/4/5　練習試合 vs 仲井真　6-4 敗北</div>
+        <div class="match-detail">小川ひゃららの帽子かぶってるの見たことないよ？　なーりーさん1イニングだけピッチャーできます　げっそん喉でミッキーマウス飼ってます　せーな次の試合からバントしかさせません　げっそんいい背中してました（コメント欄より）</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2026/2/15　練習試合 vs 嘉数中　8-5 勝利</div>
+        <div class="match-detail">嘉数中の皆さんありがとうございました。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge champ">優勝</div>
+      <div class="match-content">
+        <div class="match-headline">2026/1/2　99世代正月野球大会　全勝優勝 🏆</div>
+        <div class="match-detail">vs だるま屋・vs 土曜会を全勝で制覇。賞金10万円をゲット。だるまやさん・土曜会さんありがとうございました。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2025/11/30　REBEL杯2回戦 vs パブリック　6-1 敗北</div>
+        <div class="match-detail">パブリックさんありがとうございました。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/10/30　REBEL杯1回戦 vs DEB　10-4 勝利</div>
+        <div class="match-detail">DEBさんありがとうございました。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/10/12　練習試合 vs トラバーズ　1-0 勝利</div>
+        <div class="match-detail">トラバーズさんありがとうございました。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/7/20　練習試合 vs 西高OB　1試合目 8-5 勝利 / 2試合目 0-1 敗北</div>
+        <div class="match-detail">ボコボコにしていく予定でしたが、結果1勝1敗でした！ アンディの走者一掃タイムリー2ベース、平良の走者一掃タイムリー3ベースが光る。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/6/15　練習試合 vs 土曜会　4-3 勝利</div>
+        <div class="match-detail">小川選手のソロホームランが決勝点。2連勝で3連勝目指します！ MOMはゆうま選手。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/5/25　練習試合 vs 那覇中の後輩　8-4 勝利</div>
+        <div class="match-detail">両チーム合わせて5HRの乱打戦を制し、見事勝利。助っ人の活躍もあり。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2025/1/5　正月野球大会（6中学校対抗）　6チーム中3位</div>
+        <div class="match-detail">西原・高江洲・恩納・あげな・石川・宮里が参加。来年こそ優勝狙います！</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2024/11/10　練習試合 vs 那覇中の後輩チーム　5-2 勝利</div>
+        <div class="match-detail">先発の絶対的エース小川が相手打線を2点に抑えると、打線がそれに応えて5得点の援護射撃。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge draw">分</div>
+      <div class="match-content">
+        <div class="match-headline">2024/9/13　練習試合 vs あげな中同級生チーム　2-2 引き分け</div>
+        <div class="match-detail">andy選手が自身の2エラーを帳消しにする起死回生の2点タイムリーヒットで同点に追いつく。次回、決着をつけましょう！</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2024/8/26　vs バスケ部　3-1 勝利</div>
+        <div class="match-detail">「バスケ部相手に勝たなければ解散」という声が飛ぶ中、見事勝利。次はサッカー部を狙う。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2024/6/16　サンエス杯2戦目 vs 向日葵　2-3 惜敗</div>
+        <div class="match-detail">初回に2点先制もサヨナラ負け。2戦2敗で予選敗退。ひゃらら全国大会への道はまだまだ続く。「夢にときめけ 明日花にキララけ 目指せ甲子園」</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2024/4/1　サンエス杯1回戦 vs TOYOTA　0-4 敗北</div>
+        <div class="match-detail">初の大会参加で全員の動きが冷凍庫の中にある鶏胸肉くらいカチカチ。次こそ1勝。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2024 開幕戦　vs 後輩　2-1 勝利</div>
+        <div class="match-detail">今年は勝ちにこだわります。勝った金はタイ旅行の資金に回します。</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge win">勝</div>
+      <div class="match-content">
+        <div class="match-headline">2023/10/29　練習試合 vs 土曜会　7-2 勝利</div>
+        <div class="match-detail">投打が噛み合い2連勝。3連勝目指して頑張ります！</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2023/4/16　vs 土曜会　2-5 敗北</div>
+        <div class="match-detail">次こそ勝とう！！（の精神で毎回試合に臨んでいる）</div>
+      </div>
+    </div>
+    <div class="match-item">
+      <div class="match-badge loss">負</div>
+      <div class="match-content">
+        <div class="match-headline">2022/9/11　久しぶりの試合 vs 土曜会　5-7 敗北</div>
+        <div class="match-detail">タイブレークにもつれ込む接戦も、あと一本が出ず惜敗。来月は勝とう！！</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<\!-- MEMBERS -->
+<section id="members" class="page-section">
+  <div class="section-col-header">MEMBER LIST<strong>メンバー列伝——全員の素顔に迫る</strong></div>
+  <p style="font-size:0.72rem; color:var(--mid-gray); margin-bottom:16px;">※ 各メンバーの詳細はInstagramのハイライトをチェック！</p>
   <div class="member-grid">
-    <div class="member-card">
-      <div class="avatar av-blue">⚾</div>
-      <div class="member-name">ひゃらら A</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">卓球歴 > 野球歴</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>絶対的エース</span><span>投手・中堅手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-coral">⚾</div>
+        <div class="member-info">
+          <div class="member-name">小川</div>
+          <div class="member-pos">投手・中堅手</div>
+          <div class="member-skill-box">絶対的エース</div>
+          <div class="member-note">先発の柱。相手打線を2点に抑える安定感。</div>
+        </div>
+      </div>
     </div>
-    <div class="member-card">
-      <div class="avatar av-teal">🏓</div>
-      <div class="member-name">ひゃらら B</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">サーブだけ上手い</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>タイムリー職人</span><span>一塁手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-blue">🏏</div>
+        <div class="member-info">
+          <div class="member-name">アンディー</div>
+          <div class="member-pos">一塁手</div>
+          <div class="member-skill-box">タイムリー職人</div>
+          <div class="member-note">2エラー後の起死回生2点タイムリー。走者一掃2ベースも記録。</div>
+        </div>
+      </div>
     </div>
-    <div class="member-card">
-      <div class="avatar av-coral">🔥</div>
-      <div class="member-name">ひゃらら C</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">気合いだけは一流</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>次からバントのみ</span><span>投手 / 背番号0</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-teal">🏓</div>
+        <div class="member-info">
+          <div class="member-name">せーな</div>
+          <div class="member-pos">投手 / 背番号0</div>
+          <div class="member-skill-box">次からバントのみ</div>
+          <div class="member-note">本人の意向とは無関係に采配が下された。</div>
+        </div>
+      </div>
     </div>
-    <div class="member-card">
-      <div class="avatar av-amber">✨</div>
-      <div class="member-name">ひゃらら D</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">守備範囲が謎</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>背番号119</span><span>二塁手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-amber">✨</div>
+        <div class="member-info">
+          <div class="member-name">じょーま</div>
+          <div class="member-pos">二塁手</div>
+          <div class="member-skill-box">背番号119</div>
+          <div class="member-note">背番号の意味は本人のみぞ知る。</div>
+        </div>
+      </div>
     </div>
-    <div class="member-card">
-      <div class="avatar av-purple">💜</div>
-      <div class="member-name">ひゃらら E</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">フォームだけプロ</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>0回1/3でMOM獲得</span><span>投手（先発）</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-purple">🔥</div>
+        <div class="member-info">
+          <div class="member-name">ゆうま</div>
+          <div class="member-pos">投手（先発）</div>
+          <div class="member-skill-box">0回1/3でMOM獲得</div>
+          <div class="member-note">ヒーローインタビュー第一弾。本人は誇らしそうだった。</div>
+        </div>
+      </div>
     </div>
-    <div class="member-card">
-      <div class="avatar av-pink">🌸</div>
-      <div class="member-name">ひゃらら F</div>
-      <div class="member-pos">ポジション未定</div>
-      <div class="member-skill">打率より笑い率</div>
+    <div class="member-article">
+      <div class="member-article-header"><span>走者一掃3ベース</span><span>打者</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-pink">💪</div>
+        <div class="member-info">
+          <div class="member-name">平良</div>
+          <div class="member-pos">打者</div>
+          <div class="member-skill-box">走者一掃3ベース</div>
+          <div class="member-note">2025/7/20 西高OB戦で走者一掃タイムリー3ベースを記録。</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>1番打者</span><span>三塁手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-blue">🎯</div>
+        <div class="member-info">
+          <div class="member-name">かなり</div>
+          <div class="member-pos">三塁手</div>
+          <div class="member-skill-box">1番打者</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>4番の重責</span><span>指名打者</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-teal">🥇</div>
+        <div class="member-info">
+          <div class="member-name">なおと</div>
+          <div class="member-pos">指名打者</div>
+          <div class="member-skill-box">4番の重責</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>5番・司令塔</span><span>捕手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-coral">🎪</div>
+        <div class="member-info">
+          <div class="member-name">はるのり</div>
+          <div class="member-pos">捕手</div>
+          <div class="member-skill-box">5番・司令塔</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>8番・守備の要</span><span>遊撃手</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-amber">🌟</div>
+        <div class="member-info">
+          <div class="member-name">たいき</div>
+          <div class="member-pos">遊撃手</div>
+          <div class="member-skill-box">8番・守備の要</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>卓球部魂</span><span>ハイライトあり</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-purple">😎</div>
+        <div class="member-info">
+          <div class="member-name">なかたい</div>
+          <div class="member-pos">ハイライトあり</div>
+          <div class="member-skill-box">卓球部魂</div>
+        </div>
+      </div>
+    </div>
+    <div class="member-article">
+      <div class="member-article-header"><span>全員99世代</span><span>随時更新予定</span></div>
+      <div class="member-article-body">
+        <div class="member-avatar av-pink">🏆</div>
+        <div class="member-info">
+          <div class="member-name">他メンバー</div>
+          <div class="member-pos">随時更新予定</div>
+          <div class="member-skill-box">全員99世代</div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <div class="recruit-box">
-    <h3>対戦相手、募集中です。</h3>
-    <p>強いチームも、弱いチームも、卓球部出身のチームも、<br>誰でも大歓迎です。まずは一戦よろしくお願いします🙇‍♂️</p>
+<\!-- RECRUIT -->
+<section id="recruit" class="recruit-section">
+  <div class="recruit-inner">
+    <div class="scoop-tag">緊急募集！！</div>
+    <h2 class="recruit-headline">対戦相手、募集中です。</h2>
+    <p class="recruit-body">
+      卓球部、バスケ部、サッカー部…<br>
+      部活チームなら誰でも大歓迎。<br>
+      まずは一戦よろしくお願いします 🙇‍♂️
+    </p>
     <div class="recruit-conditions">
-      <span class="cond-tag good">野球経験者 歓迎</span>
-      <span class="cond-tag good">初心者 歓迎</span>
-      <span class="cond-tag good">卓球部出身 大歓迎</span>
-      <span class="cond-tag bad">スコアに厳しい方 要相談</span>
+      <span class="cond-tag good">部活チーム 大歓迎</span>
+      <span class="cond-tag good">初心者チーム 歓迎</span>
+      <span class="cond-tag good">沖縄県内ならどこでも</span>
+      <span class="cond-tag bad">TOYOTA系列 要覚悟</span>
     </div>
-    <a class="ig-btn" href="https://www.instagram.com/hyalala___official" target="_blank">Instagram でDMする ↗</a>
+    <a href="https://www.instagram.com/hyalala___official" target="_blank" class="recruit-cta">Instagram でDMする ↗</a>
+    <div class="recruit-fine-print">※ 本紙はユーモアを添えてお届けしています。真剣に対戦希望のチームも大歓迎です。</div>
   </div>
-</div>
+</section>
 
-<div class="footer">
-  © ひゃらら / 西原町草野球チーム<br>
-  卓球部出身一同でお届けしています⚾
-</div>
+<\!-- FOOTER -->
+<footer>
+  <div class="footer-masthead">週刊 ひゃらら</div>
+  <div class="footer-rule"></div>
+  <p>© ひゃらら / 西原町草野球チーム【軟式】</p>
+  <p>卓球部出身一同でお届けしています ⚾　#しあさってひゃらら</p>
+  <p style="margin-top:8px; color:rgba(255,215,0,0.3);">— 草野球界の新聞、ここに創刊 —</p>
+</footer>
+
+</body>
+</html>
