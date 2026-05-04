@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>週刊ひゃらら｜号外</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Anton&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+    --yellow: #FFD700;
+    --light-gray: #f4f4f2;
+    --mid-gray: #888;
+    --border: #222;
+  }
+
+  body {
+    background: var(--white);
+    font-family: 'Noto Serif JP', serif;
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ===== BREAKING NEWS TICKER ===== */
+  .ticker-wrap {
+    background: var(--black);
+    color: var(--yellow);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 3px solid var(--yellow);
+  }
+
+  .ticker-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.75rem;
+    padding: 3px 14px;
+    margin-right: 16px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-text {
+    display: inline-block;
+    animation: ticker-scroll 20s linear infinite;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* ===== MASTHEAD ===== */
+  .masthead {
+    border-bottom: 6px double var(--black);
+    padding: 20px 24px 16px;
+    position: relative;
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .masthead-meta {
+    font-size: 0.65rem;
+    color: var(--mid-gray);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+
+  .masthead-title {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .masthead-title h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    color: var(--black);
+  }
+
+  .masthead-title .subtitle {
+    font-size: 0.75rem;
+    color: var(--mid-gray);
+    letter-spacing: 0.25em;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  .masthead-price {
+    font-size: 0.65rem;
+    color: var(--mid-gray);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .masthead-rule {
+    border: none;
+    border-top: 2px solid var(--black);
+    margin-top: 4px;
+  }
+
+  /* GOGO STAMP */
+  .gogo-stamp {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    width: 90px;
+    height: 90px;
+    border: 4px solid var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    transform: rotate(-12deg);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+  }
+
+  /* ===== HERO HEADLINE ===== */
+  .hero-headline {
+    background: var(--black);
+    color: var(--white);
+    padding: 40px 24px;
+    text-align: center;
+    border-bottom: 6px solid var(--yellow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-headline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(255,215,0,0.03) 3px,
+      rgba(255,215,0,0.03) 4px
+    );
+  }
+
+  .scoop-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    padding: 4px 20px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--yellow);
+  }
+
+  .hero-sub-head {
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tags span {
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.7);
+    padding: 4px 12px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* SECTION DIVIDERS */
+  .section-banner {
+    background: var(--black);
+    color: var(--white);
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0 0;
+  }
+
+  .section-banner .banner-label {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.7rem;
+    padding: 2px 12px;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+
+  .section-banner .banner-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== TWO COLUMN LAYOUT ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-left: 1px solid var(--black);
+    border-right: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+  }
+
+  .col {
+    padding: 24px 20px;
+    border-right: 1px solid var(--black);
+  }
+
+  .col:last-child { border-right: none; }
+
+  .col-headline {
+    font-size: 1.05rem;
+    font-weight: 900;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--black);
+  }
+
+  .col-body {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: #333;
+  }
+
+  .col-body p + p { margin-top: 10px; }
+
+  /* ===== DATA TABLE SECTION ===== */
+  .data-section {
+    border: 1px solid var(--black);
+    border-top: none;
+  }
+
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--black);
+  }
+
+  .data-cell {
+    padding: 20px;
+    border-right: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    position: relative;
+  }
+
+  .data-cell:nth-child(2n) { border-right: none; }
+
+  .data-cell-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .data-cell-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .data-cell-body {
+    font-size: 0.78rem;
+    color: #444;
+    line-height: 1.75;
+  }
+
+  /* ===== DNA / SPECIAL REPORT ===== */
+  .special-report {
+    border: 1px solid var(--black);
+    border-top: none;
+  }
+
+  .special-report-inner {
+    padding: 28px 24px;
+  }
+
+  .special-headline {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-weight: 900;
+    border-bottom: 3px solid var(--black);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    line-height: 1.35;
+  }
+
+  .special-headline .urgent {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    margin-right: 10px;
+    letter-spacing: 0.12em;
+    vertical-align: middle;
+  }
+
+  .dna-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--black);
+    border-bottom: none;
+    border-right: none;
+  }
+
+  .dna-list li {
+    padding: 18px 16px;
+    border-right: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    position: relative;
+  }
+
+  .dna-list li::before {
+    content: '■';
+    color: var(--yellow);
+    margin-right: 6px;
+    font-size: 0.8rem;
+  }
+
+  .dna-list-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .dna-list-body {
+    font-size: 0.76rem;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  /* ===== MEMBERS SECTION ===== */
+  .interview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--black);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .interview-card {
+    border-right: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .interview-card-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .interview-initial {
+    width: 36px;
+    height: 36px;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .interview-name-block .name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .interview-name-block .position {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.1em;
+  }
+
+  .interview-card-body {
+    padding: 14px;
+  }
+
+  .interview-q {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.55rem;
+    padding: 1px 8px;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .interview-skill {
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .interview-quote {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.75;
+    font-style: italic;
+    border-left: 2px solid var(--yellow);
+    padding-left: 8px;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    border: 1px solid var(--black);
+    border-top: none;
+    background: var(--yellow);
+    text-align: center;
+    padding: 48px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(0,0,0,0.04) 8px,
+      rgba(0,0,0,0.04) 9px
+    );
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-urgent {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    padding: 6px 24px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+
+  .cta-headline {
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    color: var(--black);
+  }
+
+  .cta-body {
+    font-size: 0.85rem;
+    color: #333;
+    line-height: 1.9;
+    margin-bottom: 30px;
+  }
+
+  .btn-contact {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    border: 2px solid var(--black);
+  }
+
+  .btn-contact:hover {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 28px 24px;
+    border-top: 4px solid var(--yellow);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    line-height: 1.9;
+  }
+
+  footer .footer-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.4rem;
+    color: var(--yellow);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .masthead-top { flex-direction: column; align-items: center; text-align: center; }
+    .gogo-stamp { display: none; }
+    .two-col { grid-template-columns: 1fr; }
+    .col { border-right: none; border-bottom: 1px solid var(--black); }
+    .col:last-child { border-bottom: none; }
+    .data-grid { grid-template-columns: 1fr; }
+    .data-cell { border-right: none; }
+    .dna-list { grid-template-columns: 1fr; }
+    .interview-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .interview-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-label">緊急速報</span>
+  <span class="ticker-text">
+    元卓球部が草野球に殴り込み ／ 99年生まれが西原町から勝利を掴みに行く ／ サーブだけうまい選手が打席に立つ ／ 対戦申し込みはInstagram @hyalala___official まで ／
+    元卓球部が草野球に殴り込み ／ 99年生まれが西原町から勝利を掴みに行く ／ サーブだけうまい選手が打席に立つ ／ 対戦申し込みはInstagram @hyalala___official まで ／
+  </span>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-meta">
+      創刊号 ／ 第壱號<br>
+      発行：西原町草野球チーム<br>
+      沖縄県中頭郡西原町
+    </div>
+    <div class="masthead-title">
+      <h1>週刊ひゃらら</h1>
+      <p class="subtitle">WEEKLY HYALARA — NISHIHARA TOWN BASEBALL</p>
+    </div>
+    <div class="masthead-price">
+      定価：笑い一発<br>
+      毎週不定期発行<br>
+      対戦申し込み随時受付中
+    </div>
+  </div>
+  <div class="gogo-stamp">号外</div>
+  <hr class="masthead-rule">
+</header>
+
+<!-- HERO HEADLINE -->
+<div class="hero-headline">
+  <div class="scoop-label">衝撃スクープ</div>
+  <h2 class="hero-h1">
+    元卓球部が草野球に<em>殴り込み</em><br>
+    西原町から沖縄を揺らす
+  </h2>
+  <p class="hero-sub-head">「野球道具より卓球ラケットの方が得意です」　— メンバー一同、独占告白</p>
+  <div class="hero-tags">
+    <span># 草野球</span>
+    <span># 卓球部出身</span>
+    <span># 西原町</span>
+    <span># 99年生まれ</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+  <!-- SECTION BANNER: ABOUT -->
+  <div class="section-banner">
+    <span class="banner-label">特集</span>
+    <span class="banner-title">ひゃらら、とは何者か？　緊急解説</span>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <h3 class="col-headline">「野球経験より卓球経験の方が長いチームです」——本人たちが堂々と宣言</h3>
+      <div class="col-body">
+        <p>沖縄県中頭郡西原町。この静かな町から、前代未聞の草野球チームが誕生した。チーム名は「ひゃらら」。そのキャッチコピーは「西原町発・99世代・全員元卓球部」。</p>
+        <p>全員が1999年生まれで構成されており、驚くべきことに野球経験者は少数派。メンバーの多くは卓球部出身であり、ラケットを握った手でバットを振るという、常識を覆すチームである。</p>
+        <p>「フォームだけはプロ並みですが、打率はお察しください」とあるメンバーは苦笑いを浮かべながら語った。しかし誰一人として諦めていない。それがひゃらら流だ。</p>
+      </div>
+    </div>
+    <div class="col">
+      <h3 class="col-headline">独占告白：「サーブの回転は完璧、でも外角低めはお手上げ」</h3>
+      <div class="col-body">
+        <p>取材を進めると、衝撃の実態が浮かび上がってきた。メンバー全員が卓球のサーブ技術には自信を持つ一方、野球の基本スキルは「これから」という状況だという。</p>
+        <p>チームのスローガンは、笑い率が打率を超えること。試合中に笑いが起きれば、それは勝利に等しい——そんな哲学がチームを一つにまとめている。</p>
+        <p>「気合いだけは誰にも負けない」とメンバーB。「根性さえあれば何でもできる」とメンバーF。その言葉に嘘はない。少なくとも、本人たちは本気だ。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION BANNER: DATA -->
+  <div class="section-banner">
+    <span class="banner-label">緊急速報</span>
+    <span class="banner-title">チームデータ　4つの衝撃事実</span>
+  </div>
+
+  <div class="data-section">
+    <div class="data-grid">
+      <div class="data-cell">
+        <span class="data-cell-label">DATA 01</span>
+        <div class="data-cell-title">創設世代（99年・平成生まれ）</div>
+        <div class="data-cell-body">1999年生まれで結成。令和の草野球界に平成のノリを持ち込む異色の存在として注目を集めている。</div>
+      </div>
+      <div class="data-cell">
+        <span class="data-cell-label">DATA 02</span>
+        <div class="data-cell-title">全員卓球経験あり（野球経験者は少数派）</div>
+        <div class="data-cell-body">チームの大半は卓球部出身。野球経験者は希少種。これが強みになるか弱点になるか、それは試合を見てから判断してほしい。</div>
+      </div>
+      <div class="data-cell">
+        <span class="data-cell-label">DATA 03</span>
+        <div class="data-cell-title">活動場所（沖縄県中頭郡西原町）</div>
+        <div class="data-cell-body">ホームは沖縄県中頭郡西原町。青い空とサトウキビ畑を眺めながらプレーする、最高のロケーションが自慢。</div>
+      </div>
+      <div class="data-cell">
+        <span class="data-cell-label">DATA 04</span>
+        <div class="data-cell-title">対戦募集（受付中）</div>
+        <div class="data-cell-body">VS申し込みは常時受付中。強豪チームも初心者チームも大歓迎。笑いの量が勝利の基準です。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION BANNER: DNA -->
+  <div class="section-banner">
+    <span class="banner-label">特集</span>
+    <span class="banner-title">ひゃらら4大DNA　全貌解明</span>
+  </div>
+
+  <div class="special-report">
+    <div class="special-report-inner">
+      <h3 class="special-headline">
+        <span class="urgent">独占入手</span>ひゃらら遺伝子の正体——4つのコアDNAを徹底分析
+      </h3>
+      <ul class="dna-list">
+        <li>
+          <div class="dna-list-title">全員卓球部出身</div>
+          <div class="dna-list-body">サーブの回転はバッチリだが外角低めはお手上げ。卓球台の前では無敵、グラウンドでは修行中。この矛盾がひゃらら最大の魅力である。</div>
+        </li>
+        <li>
+          <div class="dna-list-title">99年生まれで固めている</div>
+          <div class="dna-list-body">1999年産の精鋭が集結。話が早く・ノリが合い・昭和ネタが通じる。同世代の結束力はプロ野球チーム以上かもしれない（個人の感想です）。</div>
+        </li>
+        <li>
+          <div class="dna-list-title">西原町を愛している</div>
+          <div class="dna-list-body">どこに遠征しても「早く西原帰りたい」と口にするメンバーたち。愛郷心のパラメータだけは間違いなくカンストしている。</div>
+        </li>
+        <li>
+          <div class="dna-list-title">対戦相手を常に求めている</div>
+          <div class="dna-list-body">DM文章の方がバットスイングより上手い疑惑あり。それでも全力で相手を求め続ける姿勢は、ある意味プロフェッショナルだ。</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION BANNER: MEMBERS -->
+  <div class="section-banner">
+    <span class="banner-label">独占インタビュー</span>
+    <span class="banner-title">メンバー6名　全員直撃</span>
+  </div>
+
+  <div class="interview-grid">
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">A</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーA</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「サーブだけ上手い」</div>
+        <div class="interview-quote">「卓球のサーブが野球で活かせるとは正直思っていない。でもやめられない。」</div>
+      </div>
+    </div>
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">B</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーB</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「気合いだけは一流」</div>
+        <div class="interview-quote">「技術がないなら気合いでカバー。それがひゃらら流というもの。」</div>
+      </div>
+    </div>
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">C</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーC</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「フォームだけプロ」</div>
+        <div class="interview-quote">「見た目だけなら誰よりも上手い自信がある。結果は聞かないでください。」</div>
+      </div>
+    </div>
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">D</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーD</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「打率より笑い率」</div>
+        <div class="interview-quote">「笑い率.999は伊達じゃない。打率は……努力中です。」</div>
+      </div>
+    </div>
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">E</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーE</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「守備より応援」</div>
+        <div class="interview-quote">「ベンチから叫ぶ声なら誰にも負けない。それもれっきとした才能だと思う。」</div>
+      </div>
+    </div>
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <div class="interview-initial">F</div>
+        <div class="interview-name-block">
+          <div class="name">メンバーF</div>
+          <div class="position">POSITION : 未定</div>
+        </div>
+      </div>
+      <div class="interview-card-body">
+        <span class="interview-q">独占証言</span>
+        <div class="interview-skill">「センスより根性」</div>
+        <div class="interview-quote">「センスがないことは認める。でも根性だけで上まで行ってやる。」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section" id="contact">
+    <div class="cta-inner">
+      <div class="cta-urgent">緊急募集</div>
+      <h2 class="cta-headline">
+        対戦チーム、募集中。<br>笑える試合、しませんか。
+      </h2>
+      <p class="cta-body">
+        Instagram の DM でお気軽にどうぞ。<br>
+        強豪も初心者も元卓球部も全員歓迎。<br>
+        「ひゃらら」はいつでも挑戦を待っています。<br>
+        <strong>@hyalala___official</strong>
+      </p>
+      <a href="https://www.instagram.com/hyalala___official/" class="btn-contact" target="_blank" rel="noopener">
+        Instagram でDMする
+      </a>
+    </div>
+  </div>
+
+</div><!-- /main-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">週刊ひゃらら</div>
+  <p>© ひゃらら / 西原町草野球チーム　卓球部出身一同でお届けしています⚾</p>
+  <p>本紙掲載記事・写真の無断転載を禁じます。ただし笑いの共有は推奨します。</p>
+</footer>
+
+</body>
+</html>
