@@ -159,6 +159,64 @@
     .recruit-cta:hover { background: var(--white); color: var(--black); }
     .recruit-fine-print { margin-top: 12px; font-size: 0.65rem; color: rgba(0,0,0,0.45); }
 
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      aspect-ratio: 4/3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-size: 2rem;
+      color: var(--white);
+      cursor: pointer;
+      line-height: 1;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    @media (max-width: 680px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
     /* FOOTER */
     footer { background: var(--black); color: var(--white); padding: 28px 20px; text-align: center; border-top: 4px solid var(--yellow); }
     .footer-masthead { font-family: 'Oswald', sans-serif; font-size: clamp(1.2rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: 0.2em; color: var(--yellow); margin-bottom: 10px; }
@@ -210,6 +268,7 @@
     <a href="#dna" class="nav-link">▶ ひゃらら DNA</a>
     <a href="#results" class="nav-link">▶ 試合結果</a>
     <a href="#members" class="nav-link">▶ メンバー</a>
+    <a href="#gallery" class="nav-link">▶ ギャラリー</a>
     <a href="#recruit" class="nav-link">▶ 対戦募集</a>
   </div>
 </nav>
@@ -683,6 +742,34 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery" class="page-section">
+  <div class="section-col-header">GALLERY<strong>📸 ギャラリー</strong></div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox('photo1.jpeg')">
+      <img src="photo1.jpeg" alt="ナイター集合写真">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('photo2.jpeg')">
+      <img src="photo2.jpeg" alt="ダグアウト自撮り">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('photo3.jpeg')">
+      <img src="photo3.jpeg" alt="優勝賞金¥100,000・集合写真">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('photo4.jpeg')">
+      <img src="photo4.jpeg" alt="優勝トロフィー自撮り">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('photo5.jpeg')">
+      <img src="photo5.jpeg" alt="昼間の集合写真">
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- RECRUIT -->
 <section id="recruit" class="recruit-section">
   <div class="recruit-inner">
@@ -713,5 +800,19 @@
   <p style="margin-top:8px; color:rgba(255,215,0,0.3);">— 草野球界の新聞、ここに創刊 —</p>
 </footer>
 
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 </body>
 </html>
