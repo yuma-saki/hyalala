@@ -159,6 +159,59 @@
     .recruit-cta:hover { background: var(--white); color: var(--black); }
     .recruit-fine-print { margin-top: 12px; font-size: 0.65rem; color: rgba(0,0,0,0.45); }
 
+    /* HERO BANNER */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 65vh;
+      min-height: 420px;
+      background-image: url('photo4.jpeg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+      max-width: 720px;
+    }
+    .hero-badge {
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 6px 22px;
+      letter-spacing: 0.2em;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Oswald', 'Noto Serif JP', sans-serif;
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.6);
+      letter-spacing: 0.05em;
+    }
+    .hero-sub {
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      opacity: 0.88;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.45);
+    }
+
     /* GALLERY */
     .gallery-grid {
       display: grid;
@@ -281,8 +334,18 @@
   </div>
 </div>
 
-<!-- HERO -->
-<section id="about" class="front-page">
+<!-- HERO PHOTO BANNER -->
+<section id="about" class="hero-banner">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🏆 2026年正月野球 全勝優勝</div>
+    <h2 class="hero-title">ひゃらら、<br>頂点に立つ。</h2>
+    <p class="hero-sub">賞金¥100,000獲得 — 全員卓球部出身チームの快挙</p>
+  </div>
+</section>
+
+<!-- FRONT PAGE -->
+<section class="front-page">
   <div class="headline-main">
     <div>
       <div class="headline-label">超速報</div>
@@ -294,10 +357,7 @@
       </p>
     </div>
     <div>
-      <div class="photo-placeholder">
-        <span class="icon">⚾</span>
-        <span>【写真】チーム集合イメージ</span>
-      </div>
+      <img src="photo4.jpeg" alt="2026年正月野球 優勝・賞金¥100,000 集合写真" style="width:100%; aspect-ratio:4/3; object-fit:cover; border:2px solid var(--black); margin-bottom:12px; display:block;">
       <div class="scoop-box">
         <div class="scoop-title">卓球部出身のみで<br>草野球チームを結成<br>大会出場経験あり</div>
         <p class="scoop-body">「なぜ野球なのか」という問いに、チームは笑顔で答えた。「それが一番面白いから」。</p>
